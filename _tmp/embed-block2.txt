@@ -1,0 +1,341 @@
+<!-- wp:html -->
+<style id="tb-fullwidth">
+#masthead,.site-header,#colophon,.site-footer,.entry-hero,.entry-hero-container-inner{display:none!important;}
+.content-container.site-container{max-width:100%!important;padding-left:0!important;padding-right:0!important;}
+#inner-wrap,#primary,#main.site-main,.content-wrap,.entry-content-wrap,.entry-content.single-content{margin:0!important;padding:0!important;}
+article.content-bg.single-entry{margin:0!important;padding:0!important;background:transparent!important;box-shadow:none!important;border:0!important;}
+body{margin:0!important;}
+</style>
+<div id="tb-diag-host"></div>
+<script>
+(function(){
+var host=document.getElementById('tb-diag-host');
+if(!host||host.shadowRoot)return;
+try{var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Jost:wght@300;400;500;600&display=swap';document.head.appendChild(l);}catch(e){}
+var SR=host.attachShadow({mode:'open'});
+SR.innerHTML="<style>\n:host{\n  --paper:#FFFFFF;\n  --blush:#F6EEEC;\n  --blush-deep:#EEE0DC;\n  --panel:#FCFAF9;\n  --sage:#7C8D7A;\n  --sage-deep:#5A6957;\n  --sage-wash:#E7ECE5;\n  --sage-mid:#A9B7A3;\n  --ink:#3A3F38;\n  --ink-soft:#8A8F85;\n  --rule:#E6DEDB;\n  --rule-soft:#F0E9E6;\n  color-scheme:light only;\n}\n:host{-webkit-text-size-adjust:100%;}\n*,*::before,*::after{box-sizing:border-box;}\n:host{\n  margin:0;background:#fff;color:var(--ink);\n  font-family:\"Jost\",\"Helvetica Neue\",Arial,sans-serif;\n  font-size:17px;font-weight:300;line-height:1.68;\n  font-variant-numeric:tabular-nums;\n}\n.wrap{max-width:1020px;margin:0 auto;padding:0 22px 110px;}\n.serif{font-family:\"Playfair Display\",Georgia,serif;}\n\n/* cabecera */\n.top{padding:36px 0 0;}\n.logo{display:inline-block;position:relative;}\n.logo .blob{position:absolute;top:-14px;left:-18px;width:96px;height:96px;background:var(--blush);border-radius:50%;z-index:0;}\n.logo .nm{position:relative;z-index:1;font-family:\"Playfair Display\",serif;font-weight:700;font-size:26px;line-height:.9;color:var(--sage-deep);letter-spacing:.4px;}\n.logo .nm span{display:block;}\nheader{position:relative;padding:40px 0 44px;}\nheader::before{content:\"\";position:absolute;left:-46px;top:24px;width:250px;height:250px;border-radius:50%;background:var(--blush);z-index:0;}\nheader>*{position:relative;z-index:1;}\n.eyebrow{font-size:.78rem;font-weight:500;letter-spacing:.14em;color:var(--sage);margin:0 0 18px;}\nh1{font-family:\"Playfair Display\",Georgia,serif;font-size:clamp(2.1rem,6vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-.015em;margin:0 0 20px;max-width:17ch;}\nh1 em{font-style:italic;font-weight:500;color:var(--sage);}\n.lede{font-size:1.1rem;max-width:60ch;margin:0;color:var(--ink-soft);line-height:1.7;}\n.lede b{font-weight:400;color:var(--ink);border-bottom:2px solid var(--sage);}\n\n/* secciones */\nsection{padding:44px 0 8px;border-top:1px solid var(--rule);}\nh2{font-size:.78rem;font-weight:500;letter-spacing:.14em;color:var(--sage);margin:0 0 10px;}\nh3{font-family:\"Playfair Display\",Georgia,serif;font-size:clamp(1.4rem,3.3vw,1.9rem);font-weight:500;line-height:1.22;letter-spacing:-.01em;margin:0 0 16px;max-width:30ch;}\n.note{font-size:.98rem;color:var(--ink-soft);max-width:66ch;}\np{max-width:66ch;}\n\n/* pasos cómo funciona */\n.steps{display:grid;gap:14px;margin-top:26px;}\n@media(min-width:720px){.steps{grid-template-columns:repeat(3,1fr);}}\n.step{background:var(--panel);border:1px solid var(--rule);border-radius:18px;padding:24px 22px 26px;}\n.step .n{font-family:\"Playfair Display\",serif;font-size:1.5rem;font-weight:700;color:var(--sage-deep);line-height:1;}\n.step .t{font-weight:500;font-size:1rem;margin:12px 0 8px;}\n.step p{margin:0;font-size:.94rem;color:var(--ink-soft);line-height:1.6;}\n\n/* leyenda de categorías */\n.cats{display:grid;gap:12px;margin-top:24px;}\n@media(min-width:620px){.cats{grid-template-columns:repeat(2,1fr);}}\n.cat{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:16px 18px;}\n.chip{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.9rem;color:#fff;font-family:\"Jost\",sans-serif;}\n.cat .ct{font-weight:500;font-size:.98rem;margin:0 0 2px;}\n.cat .cd{font-size:.86rem;color:var(--ink-soft);margin:0;line-height:1.5;}\n\n/* ladrones */\n.thieves{display:grid;gap:10px;margin-top:22px;}\n@media(min-width:620px){.thieves{grid-template-columns:repeat(2,1fr);}}\n.thief-ref{display:flex;gap:12px;align-items:flex-start;font-size:.94rem;color:var(--ink);background:var(--blush);border-radius:12px;padding:13px 16px;}\n.thief-ref b{font-weight:500;}\n.thief-ref .d{color:var(--ink-soft);font-size:.86rem;}\n\n/* registro */\n.daybar{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 22px;}\n.daybtn{font-family:\"Jost\",sans-serif;font-size:.9rem;font-weight:500;color:var(--ink-soft);background:var(--panel);border:1px solid var(--rule);border-radius:99px;padding:9px 18px;cursor:pointer;transition:all .16s ease;}\n.daybtn:hover{border-color:var(--sage);color:var(--ink);}\n.daybtn.active{background:var(--sage);border-color:var(--sage);color:#fff;}\n.daybtn .mk{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sage);margin-left:7px;vertical-align:middle;opacity:0;}\n.daybtn.done .mk{opacity:1;}\n.daybtn.active .mk{background:#fff;}\n\n.slot{background:var(--panel);border:1px solid var(--rule);border-radius:16px;padding:16px 18px;margin-bottom:12px;}\n.slot-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px;}\n.slot-time{font-family:\"Playfair Display\",serif;font-size:1.15rem;font-weight:500;color:var(--ink);}\n.slot-tag{font-size:.72rem;letter-spacing:.1em;color:var(--ink-soft);text-transform:uppercase;}\n.slot-grid{display:grid;gap:12px;}\n@media(min-width:640px){.slot-grid{grid-template-columns:1fr 190px;align-items:end;}}\n.field label{display:block;font-size:.72rem;font-weight:500;letter-spacing:.08em;color:var(--ink-soft);text-transform:uppercase;margin-bottom:6px;}\ninput[type=text],select{\n  width:100%;font-family:\"Jost\",sans-serif;font-size:.95rem;color:var(--ink);\n  background:#fff;border:1px solid var(--rule);border-radius:10px;padding:10px 12px;font-weight:300;\n}\ninput[type=text]:focus,select:focus{outline:none;border-color:var(--sage);}\n.slot-foot{display:flex;flex-wrap:wrap;gap:16px 22px;align-items:center;margin-top:12px;}\n.energy{display:flex;gap:6px;align-items:center;}\n.energy .lbl{font-size:.72rem;font-weight:500;letter-spacing:.08em;color:var(--ink-soft);text-transform:uppercase;margin-right:4px;}\n.ebtn{width:32px;height:32px;border-radius:9px;border:1px solid var(--rule);background:#fff;cursor:pointer;font-family:\"Jost\",sans-serif;font-weight:600;font-size:.82rem;color:var(--ink-soft);transition:all .14s ease;}\n.ebtn:hover{border-color:var(--sage);}\n.ebtn.on[data-e=\"B\"]{background:var(--sage-wash);border-color:var(--sage-mid);color:var(--sage-deep);}\n.ebtn.on[data-e=\"M\"]{background:var(--sage-mid);border-color:var(--sage-mid);color:#fff;}\n.ebtn.on[data-e=\"A\"]{background:var(--sage-deep);border-color:var(--sage-deep);color:#fff;}\n.thief-toggle{display:flex;gap:8px;align-items:center;font-size:.9rem;color:var(--ink);cursor:pointer;user-select:none;}\n.thief-toggle input{width:18px;height:18px;accent-color:var(--sage);cursor:pointer;}\n.thief-sel{max-width:210px;}\n.thief-sel select{padding:7px 10px;font-size:.88rem;}\n.hidden{display:none !important;}\n\n/* síntesis */\n.syn-empty{background:var(--blush);border-radius:16px;padding:26px 24px;color:var(--ink-soft);font-size:.98rem;margin-top:24px;}\n.syn{margin-top:26px;display:grid;gap:30px;}\n\n/* heatmap energía */\n.heat-scroll{overflow-x:auto;padding-bottom:8px;}\n.heat{min-width:560px;border-collapse:separate;border-spacing:4px;}\n.heat th{font-size:.72rem;font-weight:500;color:var(--ink-soft);letter-spacing:.04em;padding:4px;text-align:center;}\n.heat td.rowlab{font-size:.74rem;color:var(--ink-soft);white-space:nowrap;text-align:right;padding-right:8px;font-weight:400;}\n.cell{width:52px;height:34px;border-radius:8px;text-align:center;font-size:.8rem;font-weight:600;color:var(--ink-soft);background:var(--rule-soft);}\n.cell[data-e=\"B\"]{background:var(--sage-wash);color:var(--sage-deep);}\n.cell[data-e=\"M\"]{background:var(--sage-mid);color:#fff;}\n.cell[data-e=\"A\"]{background:var(--sage-deep);color:#fff;}\n.heat-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;color:var(--ink-soft);margin-top:12px;align-items:center;}\n.heat-legend i{display:inline-block;width:16px;height:16px;border-radius:5px;vertical-align:middle;margin-right:7px;}\n\n/* barras reparto */\n.bars{display:grid;gap:12px;margin-top:6px;}\n.bar-row{display:grid;grid-template-columns:150px 1fr 54px;align-items:center;gap:12px;font-size:.92rem;}\n.bar-name{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}\n.bar-track{display:block;height:14px;background:var(--rule-soft);border-radius:99px;overflow:hidden;}\n.bar-fill{display:block;height:100%;background:var(--sage);border-radius:99px;min-width:2px;}\n.bar-fill.alt{background:var(--sage-mid);}\n.bar-fill.thief{background:#C08A72;}\n.bar-val{text-align:right;color:var(--ink-soft);font-size:.86rem;}\n\n/* conclusiones */\n.insights{background:var(--panel);border:1px solid var(--rule);border-radius:18px;padding:26px 26px 28px;}\n.insights .kicker{font-size:.72rem;font-weight:500;letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:14px;display:block;}\n.insights ul{margin:0;padding:0;list-style:none;}\n.insights li{position:relative;padding-left:26px;margin-bottom:14px;font-size:1rem;color:var(--ink);line-height:1.6;}\n.insights li:last-child{margin-bottom:0;}\n.insights li::before{content:\"\";position:absolute;left:4px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--sage);}\n\n/* stat tiles */\n.tiles{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);}\n@media(min-width:640px){.tiles{grid-template-columns:repeat(4,1fr);}}\n.tile{background:var(--blush);border-radius:16px;padding:20px 18px;}\n.tile:nth-child(2){background:var(--sage-wash);}\n.tile .num{font-family:\"Playfair Display\",serif;font-size:2rem;font-weight:700;color:var(--sage-deep);line-height:1;}\n.tile .cap{font-size:.82rem;color:var(--ink-soft);margin-top:8px;line-height:1.4;}\n\n/* acciones */\n.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:28px 0 4px;}\nbutton.act{font-family:\"Jost\",sans-serif;font-size:.92rem;font-weight:500;border-radius:99px;padding:12px 24px;cursor:pointer;border:1px solid var(--sage);background:var(--sage);color:#fff;transition:all .16s ease;}\nbutton.act:hover{background:var(--sage-deep);border-color:var(--sage-deep);}\nbutton.ghost{background:#fff;color:var(--sage-deep);}\nbutton.ghost:hover{background:var(--blush);color:var(--sage-deep);}\n.saved{font-size:.85rem;color:var(--sage-deep);opacity:0;transition:opacity .3s ease;}\n.saved.show{opacity:1;}\n\n.callout{background:var(--sage-wash);border-radius:18px;padding:26px 26px;margin-top:30px;}\n.callout h3{margin-top:0;}\n.callout p{margin:0;color:var(--ink);}\n\nfooter{margin-top:40px;padding-top:26px;border-top:1px solid var(--rule);font-size:.9rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;}\nfooter a{color:var(--sage-deep);text-decoration:none;}\nfooter a:hover{text-decoration:underline;}\n\n@media print{\n  .daybar,.actions,.no-print{display:none !important;}\n  .slot,.step,.cat,.insights,.tile{break-inside:avoid;}\n  header::before,.logo .blob{-webkit-print-color-adjust:exact;print-color-adjust:exact;}\n}\n</style><div class=\"wrap\">\n\n  <div class=\"top\">\n    <span class=\"logo\"><span class=\"blob\" aria-hidden=\"true\"></span><span class=\"nm\"><span>eva</span><span>guerrero</span></span></span>\n  </div>\n\n  <header>\n    <p class=\"eyebrow\">Curso de Time Blocking · Guía 1 de 3</p>\n    <h1>Diagnóstico de una <em>semana</em></h1>\n    <p class=\"lede\">No puedes organizar un tiempo que no conoces. Durante siete días vas a registrar qué haces, con cuánta energía y dónde se te escapan las horas. Al final tendrás <b>tus ladrones de tiempo</b> y <b>tus mejores franjas</b>: la materia prima para diseñar tus bloques.</p>\n  </header>\n\n  <section>\n    <h2>Cómo funciona</h2>\n    <h3>Observar primero, ordenar después</h3>\n    <p class=\"note\">Esta semana no cambies nada de tu rutina. Solo observa. Rellena cada franja al terminarla (o en tres momentos: mediodía, tarde y noche), sin juzgarte. Lo que hoy parece caos, en siete días se convierte en un patrón que se puede diseñar.</p>\n    <div class=\"steps\">\n      <div class=\"step\">\n        <div class=\"n\">1</div>\n        <div class=\"t\">Registra tus franjas</div>\n        <p>Anota qué hiciste en cada franja del día, de qué tipo era y con qué energía lo viviste.</p>\n      </div>\n      <div class=\"step\">\n        <div class=\"n\">2</div>\n        <div class=\"t\">Caza a los ladrones</div>\n        <p>Marca las franjas en las que algo te robó el tiempo o el foco, e identifica qué fue.</p>\n      </div>\n      <div class=\"step\">\n        <div class=\"n\">3</div>\n        <div class=\"t\">Lee tu patrón</div>\n        <p>La síntesis del final te muestra tu mapa de energía, tu reparto real y tus fugas.</p>\n      </div>\n    </div>\n  </section>\n\n  <section>\n    <h2>Los seis tipos de bloque</h2>\n    <h3>Aprende a mirar tu tiempo por categorías</h3>\n    <p class=\"note\">Todo lo que haces cabe en uno de estos seis tipos. Conocerlos te sirve para etiquetar tu semana ahora y para agrupar tareas en bloques después. Ponles el color mentalmente mientras registras.</p>\n    <div class=\"cats\">\n      <div class=\"cat\"><span class=\"chip\" style=\"background:var(--sage-deep)\">F</span><div><p class=\"ct\">Foco · trabajo profundo</p><p class=\"cd\">Lo que exige tu mejor cabeza y sin interrupciones: estrategia, escribir, crear, pensar.</p></div></div>\n      <div class=\"cat\"><span class=\"chip\" style=\"background:var(--sage)\">G</span><div><p class=\"ct\">Gestión · admin</p><p class=\"cd\">Correo, facturas, recados, tareas sueltas de poco esfuerzo mental pero necesarias.</p></div></div>\n      <div class=\"cat\"><span class=\"chip\" style=\"background:var(--sage-mid)\">R</span><div><p class=\"ct\">Relación · reuniones y clientes</p><p class=\"cd\">Llamadas, reuniones, atención a clientes o equipo, responder a otros.</p></div></div>\n      <div class=\"cat\"><span class=\"chip\" style=\"background:#B98E7A\">C</span><div><p class=\"ct\">Contenido · visibilidad</p><p class=\"cd\">Redes, newsletter, grabar, marca personal: lo que te hace visible pero puede esperar.</p></div></div>\n      <div class=\"cat\"><span class=\"chip\" style=\"background:#C7A98F\">P</span><div><p class=\"ct\">Personal · hogar y vida</p><p class=\"cd\">Casa, familia, cuidados, recados personales, todo lo que no es negocio pero es vida.</p></div></div>\n      <div class=\"cat\"><span class=\"chip\" style=\"background:var(--ink-soft)\">D</span><div><p class=\"ct\">Descanso · recarga</p><p class=\"cd\">Pausas de verdad, deporte, dormir, ocio. No es tiempo perdido: es lo que sostiene el resto.</p></div></div>\n    </div>\n  </section>\n\n  <section>\n    <h2>Los ladrones de tiempo</h2>\n    <h3>Los sospechosos habituales</h3>\n    <p class=\"note\">Un ladrón de tiempo no es hacer algo \"mal\": es lo que te saca de lo que habías decidido hacer. Tenlos a mano mientras registras; cuando marques una franja como fuga, elegirás cuál fue.</p>\n    <div class=\"thieves\">\n      <div class=\"thief-ref\"><div><b>Notificaciones y móvil.</b> <span class=\"d\">El aviso que te saca del foco \"solo un segundo\".</span></div></div>\n      <div class=\"thief-ref\"><div><b>Multitarea y saltos.</b> <span class=\"d\">Cambiar de tarea sin terminar; el coste oculto del cambio de contexto.</span></div></div>\n      <div class=\"thief-ref\"><div><b>Reuniones sin agenda.</b> <span class=\"d\">La que podía ser un mensaje o durar la mitad.</span></div></div>\n      <div class=\"thief-ref\"><div><b>Perfeccionismo.</b> <span class=\"d\">Pulir de más algo que ya estaba bien.</span></div></div>\n      <div class=\"thief-ref\"><div><b>Decir \"sí\" a todo.</b> <span class=\"d\">Aceptar lo que no tocaba y comerte tu propio tiempo.</span></div></div>\n      <div class=\"thief-ref\"><div><b>Scroll y redes.</b> <span class=\"d\">Entrar a \"mirar una cosa\" y salir veinte minutos después.</span></div></div>\n      <div class=\"thief-ref\"><div><b>Interrupciones de otros.</b> <span class=\"d\">El \"¿tienes un momento?\" que rompe tu bloque.</span></div></div>\n      <div class=\"thief-ref\"><div><b>Empezar sin plan.</b> <span class=\"d\">Arrancar el día sin saber qué es lo importante hoy.</span></div></div>\n      <div class=\"thief-ref\"><div><b>\"Solo un momento\".</b> <span class=\"d\">Tareas rápidas que se alargan sin control.</span></div></div>\n      <div class=\"thief-ref\"><div><b>Reprocesos.</b> <span class=\"d\">Hacer dos veces lo mismo por prisa o por falta de claridad.</span></div></div>\n    </div>\n  </section>\n\n  <section id=\"registro\">\n    <h2>Tu registro de la semana</h2>\n    <h3>Elige un día y ve rellenando sus franjas</h3>\n    <p class=\"note no-print\">Se guarda solo en este navegador según escribes. Un punto verde en el día significa que ya has anotado algo. No hace falta rellenar cada casilla: con lo que sí hiciste, basta.</p>\n    <div class=\"daybar\" id=\"daybar\"></div>\n    <div id=\"slots\"></div>\n  </section>\n\n  <section id=\"sintesis\">\n    <h2>Tu semana, de un vistazo</h2>\n    <h3>El patrón que estabas buscando</h3>\n    <p class=\"note no-print\">Se calcula solo con lo que registras arriba. Cuantas más franjas anotes, más claro será el retrato.</p>\n    <div id=\"synEmpty\" class=\"syn-empty\">Aún no hay datos suficientes. Registra al menos unas cuantas franjas y aquí verás tu mapa de energía, tu reparto real del tiempo y tus mayores fugas.</div>\n    <div id=\"syn\" class=\"syn hidden\"></div>\n  </section>\n\n  <section class=\"no-print\">\n    <div class=\"actions\">\n      <button class=\"act\" id=\"download\">Descargar mi resumen</button>\n      <button class=\"act ghost\" id=\"print\">Imprimir</button>\n      <button class=\"act ghost\" id=\"reset\">Empezar de nuevo</button>\n      <span class=\"saved\" id=\"saved\">Guardado ✓</span>\n    </div>\n    <div class=\"callout\">\n      <h2>Siguiente paso</h2>\n      <h3>Guarda estos datos: los usaremos</h3>\n      <p>Tu mapa de energía y tu reparto son la base de las dos guías que vienen: descubrir tu <b>cronotipo</b> y diseñar tu <b>semana en bloques</b>. Deja este diagnóstico guardado o descarga tu resumen para tenerlo a mano.</p>\n    </div>\n  </section>\n\n  <footer>\n    <span>Curso de Time Blocking · Método Z · Eva Guerrero</span>\n    <a href=\"https://evaguerrero.es\" target=\"_blank\" rel=\"noopener\">evaguerrero.es</a>\n  </footer>\n\n</div>";
+
+(function(){
+  "use strict";
+
+  var STORE_KEY="negocioEnCalma.timeBlocking.v1";
+  var DIAS=[["lun","Lunes"],["mar","Martes"],["mie","Miércoles"],["jue","Jueves"],["vie","Viernes"],["sab","Sábado"],["dom","Domingo"]];
+  var FRANJAS=[
+    ["f1","06 – 07 h","Primera hora"],
+    ["f2","07 – 08 h","Primera hora"],
+    ["f3","08 – 09 h","Mañana"],
+    ["f4","09 – 10 h","Mañana"],
+    ["f5","10 – 11 h","Media mañana"],
+    ["f6","11 – 12 h","Media mañana"],
+    ["f7","12 – 13 h","Mediodía"],
+    ["f8","13 – 14 h","Mediodía"],
+    ["f9","14 – 15 h","Sobremesa"],
+    ["f10","15 – 16 h","Primera tarde"],
+    ["f11","16 – 17 h","Media tarde"],
+    ["f12","17 – 18 h","Media tarde"],
+    ["f13","18 – 19 h","Tarde"],
+    ["f14","19 – 20 h","Tarde-noche"],
+    ["f15","20 – 21 h","Noche"],
+    ["f16","21 – 22 h","Noche"]
+  ];
+  var CATS=[
+    ["F","Foco · trabajo profundo"],
+    ["G","Gestión · admin"],
+    ["R","Relación · reuniones"],
+    ["C","Contenido · visibilidad"],
+    ["P","Personal · hogar"],
+    ["D","Descanso · recarga"]
+  ];
+  var CAT_NOMBRE={F:"Foco",G:"Gestión",R:"Relación",C:"Contenido",P:"Personal",D:"Descanso"};
+  var LADRONES=[
+    "Notificaciones y móvil",
+    "Multitarea y saltos",
+    "Reuniones sin agenda",
+    "Perfeccionismo",
+    "Decir \"sí\" a todo",
+    "Scroll y redes",
+    "Interrupciones de otros",
+    "Empezar sin plan",
+    "\"Solo un momento\"",
+    "Reprocesos",
+    "Otro"
+  ];
+  var ENERGIA_TXT={A:"Alta",M:"Media",B:"Baja"};
+
+  /* ---- estado ---- */
+  var data=load();
+  function blankCell(){return {act:"",cat:"",ene:"",thief:false,thiefType:""};}
+  function ensure(){
+    DIAS.forEach(function(d){
+      if(!data[d[0]]) data[d[0]]={};
+      FRANJAS.forEach(function(f){ if(!data[d[0]][f[0]]) data[d[0]][f[0]]=blankCell(); });
+    });
+  }
+  function load(){
+    try{var raw=localStorage.getItem(STORE_KEY);if(raw){var o=JSON.parse(raw);return (o&&o.diagnostico)?o.diagnostico:(o||{});}}catch(e){}
+    return {};
+  }
+  function save(){
+    try{
+      var full={};
+      try{var raw=localStorage.getItem(STORE_KEY);if(raw)full=JSON.parse(raw)||{};}catch(e){}
+      full.diagnostico=data;
+      full.diagnosticoActualizado=new Date().toISOString();
+      localStorage.setItem(STORE_KEY,JSON.stringify(full));
+      flashSaved();
+    }catch(e){/* modo privado: seguimos sin persistir */}
+  }
+  var savedT;
+  function flashSaved(){var s=SR.getElementById("saved");if(!s)return;s.classList.add("show");clearTimeout(savedT);savedT=setTimeout(function(){s.classList.remove("show");},1400);}
+
+  ensure();
+
+  var activeDay=DIAS[0][0];
+
+  /* ---- helpers ---- */
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+  function dayHasData(dk){return FRANJAS.some(function(f){var c=data[dk][f[0]];return c.act||c.cat||c.ene||c.thief;});}
+
+  /* ---- render barra de días ---- */
+  var daybar=SR.getElementById("daybar");
+  function renderDaybar(){
+    daybar.innerHTML="";
+    DIAS.forEach(function(d){
+      var b=document.createElement("button");
+      b.className="daybtn"+(d[0]===activeDay?" active":"")+(dayHasData(d[0])?" done":"");
+      b.innerHTML=esc(d[1])+'<span class="mk"></span>';
+      b.addEventListener("click",function(){activeDay=d[0];renderDaybar();renderSlots();});
+      daybar.appendChild(b);
+    });
+  }
+
+  /* ---- render franjas del día activo ---- */
+  var slots=SR.getElementById("slots");
+  function renderSlots(){
+    slots.innerHTML="";
+    FRANJAS.forEach(function(f){
+      var c=data[activeDay][f[0]];
+      var slot=document.createElement("div");
+      slot.className="slot";
+
+      var catOpts='<option value="">— tipo —</option>'+CATS.map(function(k){return '<option value="'+k[0]+'"'+(c.cat===k[0]?" selected":"")+'>'+esc(k[1])+'</option>';}).join("");
+      var thiefOpts='<option value="">¿cuál?</option>'+LADRONES.map(function(l){return '<option value="'+esc(l)+'"'+(c.thiefType===l?" selected":"")+'>'+esc(l)+'</option>';}).join("");
+
+      slot.innerHTML=
+        '<div class="slot-head"><span class="slot-time">'+esc(f[1])+'</span><span class="slot-tag">'+esc(f[2])+'</span></div>'+
+        '<div class="slot-grid">'+
+          '<div class="field"><label>¿Qué hiciste?</label><input type="text" data-k="act" placeholder="En una frase…" value="'+esc(c.act)+'"></div>'+
+          '<div class="field"><label>Tipo de bloque</label><select data-k="cat">'+catOpts+'</select></div>'+
+        '</div>'+
+        '<div class="slot-foot">'+
+          '<div class="energy"><span class="lbl">Energía</span>'+
+            '<button class="ebtn'+(c.ene==="B"?" on":"")+'" data-e="B" title="Baja">B</button>'+
+            '<button class="ebtn'+(c.ene==="M"?" on":"")+'" data-e="M" title="Media">M</button>'+
+            '<button class="ebtn'+(c.ene==="A"?" on":"")+'" data-e="A" title="Alta">A</button>'+
+          '</div>'+
+          '<label class="thief-toggle"><input type="checkbox" data-k="thief"'+(c.thief?" checked":"")+'> Aquí perdí tiempo</label>'+
+          '<div class="thief-sel field'+(c.thief?"":" hidden")+'"><select data-k="thiefType">'+thiefOpts+'</select></div>'+
+        '</div>';
+
+      /* eventos */
+      var actInput=slot.querySelector('input[data-k="act"]');
+      actInput.addEventListener("input",function(){c.act=actInput.value;save();markDay();});
+      var catSel=slot.querySelector('select[data-k="cat"]');
+      catSel.addEventListener("change",function(){c.cat=catSel.value;save();markDay();renderSyn();});
+      slot.querySelectorAll(".ebtn").forEach(function(btn){
+        btn.addEventListener("click",function(){
+          var v=btn.getAttribute("data-e");
+          c.ene=(c.ene===v?"":v);
+          slot.querySelectorAll(".ebtn").forEach(function(b){b.classList.toggle("on",b.getAttribute("data-e")===c.ene);});
+          save();markDay();renderSyn();
+        });
+      });
+      var thiefChk=slot.querySelector('input[data-k="thief"]');
+      var thiefSel=slot.querySelector('.thief-sel');
+      var thiefSelEl=slot.querySelector('select[data-k="thiefType"]');
+      thiefChk.addEventListener("change",function(){
+        c.thief=thiefChk.checked;
+        thiefSel.classList.toggle("hidden",!c.thief);
+        if(!c.thief){c.thiefType="";thiefSelEl.value="";}
+        save();markDay();renderSyn();
+      });
+      thiefSelEl.addEventListener("change",function(){c.thiefType=thiefSelEl.value;save();renderSyn();});
+
+      slots.appendChild(slot);
+    });
+  }
+  function markDay(){
+    var btns=daybar.querySelectorAll(".daybtn");
+    DIAS.forEach(function(d,i){btns[i].classList.toggle("done",dayHasData(d[0]));});
+  }
+
+  /* ---- síntesis ---- */
+  function compute(){
+    var total=0, byCat={}, byEne={A:0,M:0,B:0}, thiefCount=0, byThief={};
+    var eneScore=0, eneN=0;
+    var franjaEnergy={}; FRANJAS.forEach(function(f){franjaEnergy[f[0]]={sum:0,n:0};});
+    CATS.forEach(function(k){byCat[k[0]]=0;});
+    DIAS.forEach(function(d){
+      FRANJAS.forEach(function(f){
+        var c=data[d[0]][f[0]];
+        var filled=c.act||c.cat||c.ene;
+        if(filled) total++;
+        if(c.cat) byCat[c.cat]++;
+        if(c.ene){byEne[c.ene]++;var v=c.ene==="A"?3:c.ene==="M"?2:1;franjaEnergy[f[0]].sum+=v;franjaEnergy[f[0]].n++;eneScore+=v;eneN++;}
+        if(c.thief){thiefCount++;var t=c.thiefType||"Sin especificar";byThief[t]=(byThief[t]||0)+1;}
+      });
+    });
+    return {total:total,byCat:byCat,byEne:byEne,thiefCount:thiefCount,byThief:byThief,franjaEnergy:franjaEnergy,eneAvg:eneN?eneScore/eneN:0};
+  }
+
+  var synEl=SR.getElementById("syn");
+  var synEmpty=SR.getElementById("synEmpty");
+
+  function eneClass(v){ if(v>=2.34)return "A"; if(v>=1.67)return "M"; if(v>0)return "B"; return ""; }
+
+  function renderSyn(){
+    var m=compute();
+    if(m.total<3){synEl.classList.add("hidden");synEmpty.classList.remove("hidden");return;}
+    synEmpty.classList.add("hidden");synEl.classList.remove("hidden");
+
+    /* tiles */
+    var focoPct=m.total?Math.round((m.byCat.F/m.total)*100):0;
+    var mejorFranja=bestFranja(m);
+    var topThief=topKey(m.byThief);
+    var html="";
+    html+='<div class="tiles">'+
+      '<div class="tile"><div class="num">'+m.total+'</div><div class="cap">franjas registradas</div></div>'+
+      '<div class="tile"><div class="num">'+focoPct+'%</div><div class="cap">de tu tiempo fue foco profundo</div></div>'+
+      '<div class="tile"><div class="num">'+m.thiefCount+'</div><div class="cap">fugas de tiempo cazadas</div></div>'+
+      '<div class="tile"><div class="num" style="font-size:1.15rem;line-height:1.15;padding-top:4px">'+esc(mejorFranja.label)+'</div><div class="cap">tu franja de más energía</div></div>'+
+    '</div>';
+
+    /* heatmap */
+    html+='<div><h3 style="font-size:1.25rem;margin-bottom:6px">Tu mapa de energía</h3><p class="note" style="margin-bottom:14px">Cada casilla es una franja. Cuanto más oscura, más energía tuviste. Busca tus bloques oscuros: ahí va tu trabajo de foco.</p><div class="heat-scroll"><table class="heat"><thead><tr><th></th>';
+    DIAS.forEach(function(d){html+='<th>'+esc(d[1].slice(0,3))+'</th>';});
+    html+='</tr></thead><tbody>';
+    FRANJAS.forEach(function(f){
+      html+='<tr><td class="rowlab">'+esc(f[1])+'</td>';
+      DIAS.forEach(function(d){
+        var c=data[d[0]][f[0]];
+        var e=c.ene||"";
+        html+='<td><div class="cell" data-e="'+e+'" title="'+esc(d[1])+' · '+esc(f[1])+(e?' · energía '+ENERGIA_TXT[e]:'')+'">'+(e||"·")+'</div></td>';
+      });
+      html+='</tr>';
+    });
+    html+='</tbody></table></div><div class="heat-legend"><span><i style="background:var(--sage-wash)"></i>Baja</span><span><i style="background:var(--sage-mid)"></i>Media</span><span><i style="background:var(--sage-deep)"></i>Alta</span><span><i style="background:var(--rule-soft)"></i>Sin dato</span></div></div>';
+
+    /* reparto por categoría */
+    html+='<div><h3 style="font-size:1.25rem;margin-bottom:6px">Tu reparto real del tiempo</h3><p class="note" style="margin-bottom:14px">Dónde se fueron de verdad tus franjas. Compáralo con dónde querrías que fueran.</p><div class="bars">';
+    var maxCat=1;CATS.forEach(function(k){maxCat=Math.max(maxCat,m.byCat[k[0]]);});
+    CATS.forEach(function(k){
+      var v=m.byCat[k[0]];var pct=m.total?Math.round((v/m.total)*100):0;
+      var w=Math.round((v/maxCat)*100);
+      html+='<div class="bar-row"><span class="bar-name">'+esc(CAT_NOMBRE[k[0]])+'</span><span class="bar-track"><span class="bar-fill" style="width:'+w+'%"></span></span><span class="bar-val">'+pct+'%</span></div>';
+    });
+    html+='</div></div>';
+
+    /* ladrones */
+    if(m.thiefCount>0){
+      html+='<div><h3 style="font-size:1.25rem;margin-bottom:6px">Tus ladrones de tiempo</h3><p class="note" style="margin-bottom:14px">Las fugas ordenadas por frecuencia. Empieza a defenderte por el de arriba.</p><div class="bars">';
+      var arr=Object.keys(m.byThief).map(function(k){return [k,m.byThief[k]];}).sort(function(a,b){return b[1]-a[1];});
+      var maxT=arr[0][1]||1;
+      arr.forEach(function(p){
+        var w=Math.round((p[1]/maxT)*100);
+        html+='<div class="bar-row"><span class="bar-name" title="'+esc(p[0])+'">'+esc(p[0])+'</span><span class="bar-track"><span class="bar-fill thief" style="width:'+w+'%"></span></span><span class="bar-val">'+p[1]+'×</span></div>';
+      });
+      html+='</div></div>';
+    }
+
+    /* conclusiones */
+    html+='<div class="insights"><span class="kicker">Lo que esto te dice para tus bloques</span><ul>'+buildInsights(m,mejorFranja,topThief,focoPct)+'</ul></div>';
+
+    synEl.innerHTML=html;
+  }
+
+  function bestFranja(m){
+    var best=null,bestV=-1;
+    FRANJAS.forEach(function(f){var fe=m.franjaEnergy[f[0]];if(fe.n){var avg=fe.sum/fe.n;if(avg>bestV){bestV=avg;best=f;}}});
+    return best?{key:best[0],label:best[1],tag:best[2]}:{key:"",label:"—",tag:""};
+  }
+  function worstFranja(m){
+    var w=null,wV=99;
+    FRANJAS.forEach(function(f){var fe=m.franjaEnergy[f[0]];if(fe.n){var avg=fe.sum/fe.n;if(avg<wV){wV=avg;w=f;}}});
+    return w?{label:w[1],tag:w[2]}:null;
+  }
+  function topKey(obj){var best=null,bv=-1;Object.keys(obj).forEach(function(k){if(obj[k]>bv){bv=obj[k];best=k;}});return best;}
+
+  function buildInsights(m,mejor,topThief,focoPct){
+    var li=[];
+    if(mejor.key){
+      li.push("Tu energía sube en la franja de <b>"+esc(mejor.label)+"</b> ("+esc(mejor.tag.toLowerCase())+"). Reserva ahí tu bloque de foco: es tu oro y no se gasta en correo.");
+    }
+    var peor=worstFranja(m);
+    if(peor && peor.label!==mejor.label){
+      li.push("En la franja de <b>"+esc(peor.label)+"</b> vas más floja. Es el sitio natural para gestión ligera, recados o descanso, no para lo difícil.");
+    }
+    if(focoPct<20){
+      li.push("Solo un <b>"+focoPct+"%</b> de tu semana fue foco profundo. No es falta de tiempo: es que nadie lo estaba protegiendo. Un bloque fijo lo cambia.");
+    }else if(focoPct>45){
+      li.push("Dedicas mucho a foco profundo (<b>"+focoPct+"%</b>). Cuida que no se coma el descanso: los bloques también sirven para poner freno.");
+    }
+    if(topThief){
+      var tcount=m.byThief[topThief];
+      li.push("Tu mayor ladrón fue <b>"+esc(topThief)+"</b> ("+tcount+" veces). Diseña una defensa concreta: una franja sin notificaciones, una norma, un horario cerrado.");
+    }
+    if(m.byCat.D===0){
+      li.push("No registraste ni una franja de <b>descanso</b>. Un calendario sin pausas no se sostiene; ponle bloque también a recargar.");
+    }
+    if(li.length<3){
+      li.push("Sigue registrando unos días más: cuantas más franjas anotes, más nítido será el patrón para diseñar tu semana.");
+    }
+    return li.map(function(t){return "<li>"+t+"</li>";}).join("");
+  }
+
+  /* ---- acciones ---- */
+  SR.getElementById("print").addEventListener("click",function(){window.print();});
+  SR.getElementById("reset").addEventListener("click",function(){
+    if(!confirm("¿Seguro que quieres borrar todo el registro y empezar de nuevo?"))return;
+    data={};ensure();
+    try{var raw=localStorage.getItem(STORE_KEY);var full=raw?JSON.parse(raw):{};full.diagnostico=data;localStorage.setItem(STORE_KEY,JSON.stringify(full));}catch(e){}
+    activeDay=DIAS[0][0];renderDaybar();renderSlots();renderSyn();
+  });
+  SR.getElementById("download").addEventListener("click",function(){
+    var m=compute();
+    var lines=[];
+    lines.push("DIAGNÓSTICO DE UNA SEMANA · Time Blocking · Eva Guerrero");
+    lines.push("Generado: "+new Date().toLocaleString("es-ES"));
+    lines.push("");
+    lines.push("RESUMEN");
+    lines.push("- Franjas registradas: "+m.total);
+    var mejor=bestFranja(m);var peor=worstFranja(m);
+    lines.push("- Franja de más energía: "+(mejor.key?mejor.label:"—"));
+    if(peor) lines.push("- Franja de menos energía: "+peor.label);
+    lines.push("");
+    lines.push("REPARTO POR TIPO DE BLOQUE");
+    CATS.forEach(function(k){var v=m.byCat[k[0]];var pct=m.total?Math.round(v/m.total*100):0;lines.push("- "+CAT_NOMBRE[k[0]]+": "+v+" franjas ("+pct+"%)");});
+    lines.push("");
+    lines.push("LADRONES DE TIEMPO ("+m.thiefCount+" fugas)");
+    var arr=Object.keys(m.byThief).map(function(k){return [k,m.byThief[k]];}).sort(function(a,b){return b[1]-a[1];});
+    if(arr.length===0)lines.push("- Ninguna registrada");
+    arr.forEach(function(p){lines.push("- "+p[0]+": "+p[1]+" veces");});
+    lines.push("");
+    lines.push("REGISTRO DETALLADO");
+    DIAS.forEach(function(d){
+      var any=false;
+      FRANJAS.forEach(function(f){var c=data[d[0]][f[0]];if(c.act||c.cat||c.ene||c.thief){if(!any){lines.push("");lines.push(d[1].toUpperCase());any=true;}var bits=[];bits.push(f[1]);if(c.act)bits.push('"'+c.act+'"');if(c.cat)bits.push("["+CAT_NOMBRE[c.cat]+"]");if(c.ene)bits.push("energía "+ENERGIA_TXT[c.ene]);if(c.thief)bits.push("· LADRÓN: "+(c.thiefType||"sin especificar"));lines.push("  "+bits.join("  "));}});
+    });
+    var blob=new Blob([lines.join("\n")],{type:"text/plain;charset=utf-8"});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement("a");a.href=url;a.download="diagnostico-semana.txt";document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url);},1500);
+  });
+
+  /* ---- init ---- */
+  renderDaybar();
+  renderSlots();
+  renderSyn();
+})();
+
+})();
+</script>
+<!-- /wp:html -->
