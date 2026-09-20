@@ -184,14 +184,14 @@ footer a{color:var(--sage-deep);text-decoration:none;border-bottom:1px solid var
 </div>
 
 <header>
-  <p class="eyebrow">plantilla · planificación anual</p>
-  <h1>con cuánta antelación preparar <em>cada promoción</em> de 2027</h1>
+  <p class="eyebrow">Plantilla Interactiva · planificación anual</p>
+  <h1>Con cuánta antelación preparar <em>cada promoción</em> de 2027</h1>
   <p class="lede">Las fechas comerciales no se pierden por falta de ideas, se pierden por empezar tarde. Aquí tienes el calendario de 2027 con <b>el día en que toca empezar</b>, no solo el día en que se vende. Para que diciembre sea un mes de cobrar, no de correr.</p>
 </header>
 
 <section>
-  <h2>el año de un vistazo</h2>
-  <h3>Cada barra es el trabajo previo. El punto es el día de la promoción.</h3>
+  <h2>El año de un vistazo</h2>
+  <h3>Cada barra es el trabajo previo.<br>El punto es el día de la promoción.</h3>
   <div class="ruler-scroll">
     <div class="ruler">
       <div class="months" id="months"></div>
@@ -286,10 +286,138 @@ footer a{color:var(--sage-deep);text-decoration:none;border-bottom:1px solid var
   </div>
 </section>
 
+<style>
+.rec .picker{margin:26px 0 4px;max-width:420px;}
+.rec-out{margin-top:30px;display:none;}
+.rec-out.show{display:block;animation:recIn .35s ease;}
+@keyframes recIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.rec-intro{font-size:1.06rem;color:var(--ink);max-width:62ch;margin:0 0 26px;line-height:1.7;}
+.rec-cards{display:grid;gap:14px;}
+@media(min-width:720px){.rec-cards{grid-template-columns:repeat(3,1fr);}}
+.rec-card{background:var(--blush);border-radius:18px;padding:24px 22px 26px;display:flex;flex-direction:column;}
+.rec-card:nth-child(2){background:var(--sage-wash);}
+.rec-card .kicker{font-size:.72rem;font-weight:500;letter-spacing:.12em;color:var(--sage);margin-bottom:10px;}
+.rec-card .name{font-family:"Playfair Display",Georgia,serif;font-size:1.25rem;font-weight:500;line-height:1.2;margin:0 0 10px;color:var(--ink);}
+.rec-card .when{font-size:.82rem;font-weight:500;color:var(--sage-deep);margin:0 0 10px;}
+.rec-card p{margin:0;font-size:.94rem;color:var(--ink-soft);line-height:1.6;}
+.rec-firma{margin-top:22px;background:var(--panel);border:1px solid var(--rule);border-radius:18px;padding:24px 26px;}
+.rec-firma .kicker{font-size:.72rem;font-weight:500;letter-spacing:.12em;color:var(--sage);margin-bottom:10px;display:block;}
+.rec-firma p{margin:0;font-size:1rem;color:var(--ink);line-height:1.7;max-width:66ch;}
+.rec-disc{font-size:.85rem;color:var(--ink-soft);margin-top:22px;max-width:64ch;}
+</style>
+
+<section class="rec">
+  <h2>Recomendación de Claude</h2>
+  <h3>Dime a qué te dedicas y te digo por dónde empezar</h3>
+  <p class="note">No todos los negocios necesitan las mismas fechas. Elige el que más se te parezca y te propongo las tres campañas por las que yo empezaría este año, con el momento de arrancar y una idea con tu sello.</p>
+  <div class="picker">
+    <label for="negocio">tu tipo de negocio</label>
+    <select id="negocio">
+      <option value="">Elige una opción…</option>
+      <option value="coaching">Coaching y acompañamiento (1:1, mentorías)</option>
+      <option value="formacion">Formación online (cursos, infoproductos)</option>
+      <option value="servicios">Servicios freelance (diseño, copy, consultoría)</option>
+      <option value="ecommerce">Tienda online / e-commerce</option>
+      <option value="artesania">Producto artesanal / hecho a mano</option>
+      <option value="marca">Marca personal / creación de contenido</option>
+    </select>
+  </div>
+  <div class="rec-out" id="recOut"></div>
+  <p class="rec-disc">Son recomendaciones de partida, pensadas para el negocio “tipo” de cada categoría: ajústalas a tu oferta, tu capacidad y tu público. Si me cuentas tu caso concreto, afinamos el calendario juntas.</p>
+</section>
+
 <footer>
   <span>Plantilla de planificación anual · Método Z</span>
   <a href="https://evaguerrero.es">evaguerrero.es</a>
 </footer>
+
+<script>
+(function(){
+  "use strict";
+  var REC={
+    coaching:{
+      intro:"En acompañamiento vendes transformación, no producto: tus mejores momentos son los de “nuevo comienzo”, cuando la gente decide invertir en sí misma. Concentra la energía en pocas aperturas al año y prepáralas con calma.",
+      campanas:[
+        {k:"Campaña grande",n:"Arranque de año",w:"Empieza en noviembre de 2026",p:"Enero es el gran momento del propósito. Abre plazas de tu programa con la web lista y una lista de espera caliente desde antes de Navidad."},
+        {k:"Campaña media",n:"Vuelta de verano",w:"Empieza a primeros de julio",p:"Septiembre es el segundo enero. Una edición limitada de tu mentoría para quien vuelve con ganas de ordenar su negocio."},
+        {k:"Promoción exprés",n:"Cierre de año / balance",w:"Empieza a mediados de noviembre",p:"En diciembre no vendas prisa: vende reflexión. Una sesión o taller de balance que siembra las altas de enero."}
+      ],
+      firma:"Tu campaña con sello: convierte el propósito de enero en tu ancla del año. Un mismo programa, misma URL cada temporada, que va ganando autoridad y testimonios edición tras edición. Método Z como marco: hogar, finanzas, negocio y vida."
+    },
+    formacion:{
+      intro:"Con un curso o infoproducto puedes vender todo el año en automático, pero los picos de lanzamiento en directo son los que hacen caja. Combina un gran lanzamiento con reaperturas cortas bien colocadas.",
+      campanas:[
+        {k:"Campaña grande",n:"Lanzamiento estrella",w:"Empieza 16 semanas antes",p:"Elige enero o septiembre y monta el lanzamiento completo: contenido gratuito, webinar y carrito abierto unos días. Es tu mayor entrada de alumnos."},
+        {k:"Campaña media",n:"Black Friday formativo",w:"Empieza a primeros de agosto",p:"Tu mejor oferta del año para el curso ya validado. Prepara la landing con antelación para que Google la tenga indexada."},
+        {k:"Promoción exprés",n:"Flash de mitad de año",w:"Empieza 3 semanas antes",p:"Un fin de semana de puertas abiertas en junio para reactivar a quien te sigue pero aún no ha comprado."}
+      ],
+      firma:"Tu campaña con sello: un lanzamiento evergreen que reabres dos o tres veces al año sobre la MISMA página. Cada edición mejora el SEO y acumula reseñas, así que el curso se vende cada vez con menos esfuerzo."
+    },
+    servicios:{
+      intro:"Vendiendo tu tiempo el límite es tu agenda, así que aquí no se trata de vender más barato, sino de llenar los huecos flojos y subir el valor medio. Usa el calendario para adelantarte a los meses tranquilos.",
+      campanas:[
+        {k:"Campaña media",n:"Cierre de agenda del trimestre",w:"Empieza 8 semanas antes",p:"Antes de cada temporada baja (verano, enero), abre un número limitado de plazas o un paquete cerrado para no llegar con la agenda vacía."},
+        {k:"Campaña media",n:"Auditoría o intensivo de septiembre",w:"Empieza a primeros de julio",p:"En la vuelta las empresas revisan objetivos. Un servicio corto y concreto (auditoría, día intensivo) es una puerta de entrada fácil."},
+        {k:"Promoción exprés",n:"Últimas horas del año",w:"Empieza a mediados de noviembre",p:"Vende en noviembre los proyectos que empezarán en enero: cobras antes de fin de año y arrancas el año con trabajo firmado."}
+      ],
+      firma:"Tu campaña con sello: un “intensivo” de bajo compromiso y alto valor que ofreces dos veces al año. Es tu mejor captador de clientes nuevos y el escalón previo a tus servicios largos."
+    },
+    ecommerce:{
+      intro:"En tienda online el calendario comercial manda: aquí sí juegas todas las fechas fuertes. La clave no es la idea, es llegar con stock, anuncios y páginas indexadas a tiempo. Reutiliza cada año las mismas URLs.",
+      campanas:[
+        {k:"Campaña grande",n:"Black Friday / Navidad",w:"Empieza en agosto",p:"Es tu trimestre del año. Landing publicada 8 semanas antes, campañas de recaptación listas y stock cerrado con margen."},
+        {k:"Campaña grande",n:"Rebajas de enero",w:"Empieza en otoño de 2026",p:"Se preparan antes de que acabe el año anterior. Aprovecha para dar salida al stock de temporada."},
+        {k:"Campaña media",n:"Fecha que sea tuya",w:"Empieza 8 semanas antes",p:"Día de la Madre, San Valentín o tu aniversario: elige UNA fecha media y hazla grande, en lugar de repartirte en muchas pequeñas."}
+      ],
+      firma:"Tu campaña con sello: convierte tu aniversario de tienda en la tercera gran fecha del año, junto a Black Friday y rebajas. Misma URL, misma mecánica cada año, y la autoridad SEO se va acumulando."
+    },
+    artesania:{
+      intro:"Con producto hecho a mano tu cuello de botella es el tiempo de producción, así que hay que anunciarse antes que nadie y cerrar pedidos con margen para fabricar sin agobios. Menos fechas, pero mejor preparadas.",
+      campanas:[
+        {k:"Campaña grande",n:"Regalos de Navidad",w:"Empieza en septiembre",p:"Abre encargos con fecha límite de pedido bien visible. Comunica “hasta aquí llego” para no ahogarte en diciembre."},
+        {k:"Campaña media",n:"Día de la Madre",w:"Empieza 8 semanas antes",p:"Una pieza especial o edición limitada. El regalo emocional es tu terreno; enseña el proceso de creación en redes."},
+        {k:"Promoción exprés",n:"Liquidación de temporada",w:"Empieza 3 semanas antes",p:"Da salida a piezas únicas o descatalogadas en un drop corto. Ideal para hacer hueco y caja entre campañas grandes."}
+      ],
+      firma:"Tu campaña con sello: un “drop” con fecha y unidades limitadas, un par de veces al año. La escasez real de lo hecho a mano juega a tu favor: se agota y crea lista de espera para el siguiente."
+    },
+    marca:{
+      intro:"Como creadora, tu activo es la comunidad. Vendes pocas veces pero bien, y cada campaña tiene que sentirse coherente con lo que compartes gratis todo el año. Siembra contenido, cosecha en fechas concretas.",
+      campanas:[
+        {k:"Campaña grande",n:"Tu producto insignia",w:"Empieza 16 semanas antes",p:"Un lanzamiento al año a lo grande (curso, membresía, libro). El resto del año siembras el terreno con contenido que apunta a él."},
+        {k:"Campaña media",n:"Vuelta de septiembre",w:"Empieza a primeros de julio",p:"La audiencia vuelve con ganas de aprender. Ideal para abrir una membresía o una comunidad de pago."},
+        {k:"Promoción exprés",n:"Colaboración o fecha señalada",w:"Empieza 3 semanas antes",p:"Aprovecha una fecha del calendario o una colaboración para un lanzamiento corto y con chispa, sin desgastar a tu comunidad."}
+      ],
+      firma:"Tu campaña con sello: una membresía o comunidad que abres puertas dos veces al año. Entre aperturas, todo tu contenido gratuito trabaja para la siguiente. Ingreso recurrente y relación de largo plazo."
+    }
+  };
+
+  var sel=document.getElementById("negocio");
+  var out=document.getElementById("recOut");
+  if(!sel||!out) return;
+
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+
+  function render(key){
+    var r=REC[key];
+    if(!r){out.className="rec-out";out.innerHTML="";return;}
+    var cards=r.campanas.map(function(c){
+      return '<div class="rec-card">'+
+        '<span class="kicker">'+esc(c.k)+'</span>'+
+        '<div class="name">'+esc(c.n)+'</div>'+
+        '<div class="when">'+esc(c.w)+'</div>'+
+        '<p>'+esc(c.p)+'</p>'+
+      '</div>';
+    }).join("");
+    out.innerHTML=
+      '<p class="rec-intro">'+esc(r.intro)+'</p>'+
+      '<div class="rec-cards">'+cards+'</div>'+
+      '<div class="rec-firma"><span class="kicker">Idea con tu sello</span><p>'+esc(r.firma)+'</p></div>';
+    out.className="rec-out show";
+  }
+
+  sel.addEventListener("change",function(){render(sel.value);});
+})();
+</script>
 
 </div>
 
