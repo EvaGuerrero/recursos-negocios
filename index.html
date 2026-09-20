@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recursos · Eva Guerrero</title>
+<meta name="description" content="Recursos y plantillas publicados por Eva Guerrero — Negocio en Calma.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --blush:#F6EEEC;
+  --blush-deep:#EEE0DC;
+  --panel:#FCFAF9;
+  --sage:#7C8D7A;
+  --sage-deep:#5A6957;
+  --sage-wash:#E7ECE5;
+  --ink:#3A3F38;
+  --ink-soft:#8A8F85;
+  --rule:#E6DEDB;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Jost',system-ui,sans-serif;
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:760px;
+  margin:0 auto;
+  padding:64px 24px 96px;
+}
+.brand{
+  display:inline-block;
+  position:relative;
+  margin-bottom:56px;
+}
+.brand-blob{
+  position:absolute;
+  top:-14px;left:-18px;
+  width:96px;height:96px;
+  background:var(--blush);
+  border-radius:50%;
+  z-index:0;
+}
+.brand-name{
+  position:relative;
+  z-index:1;
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:30px;
+  line-height:0.92;
+  color:var(--sage-deep);
+  letter-spacing:0.5px;
+}
+.brand-name span{display:block;}
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:500;
+  color:var(--ink-soft);
+  margin-bottom:18px;
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-weight:800;
+  font-size:clamp(38px,7vw,60px);
+  line-height:1.02;
+  margin:0 0 20px;
+  color:var(--ink);
+}
+h1 em{
+  font-style:italic;
+  font-weight:500;
+  color:var(--sage);
+}
+.intro{
+  font-size:18px;
+  color:#5c615a;
+  max-width:56ch;
+  margin:0 0 48px;
+}
+.rule{
+  height:1px;
+  background:var(--rule);
+  border:0;
+  margin:0 0 40px;
+}
+.list-label{
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:500;
+  color:var(--ink-soft);
+  margin-bottom:22px;
+}
+.resources{
+  list-style:none;
+  margin:0;padding:0;
+}
+.resource{
+  margin:0 0 16px;
+}
+.resource a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  text-decoration:none;
+  color:inherit;
+  background:var(--panel);
+  border:1px solid var(--rule);
+  border-radius:18px;
+  padding:26px 28px;
+  transition:border-color .2s ease, transform .2s ease, background .2s ease;
+}
+.resource a:hover{
+  border-color:var(--sage);
+  background:var(--blush);
+  transform:translateY(-2px);
+}
+.resource-text{min-width:0;}
+.resource-tag{
+  text-transform:uppercase;
+  letter-spacing:2.5px;
+  font-size:11px;
+  font-weight:500;
+  color:var(--sage-deep);
+  margin-bottom:8px;
+}
+.resource-title{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:24px;
+  line-height:1.15;
+  color:var(--ink);
+  margin:0 0 6px;
+}
+.resource-desc{
+  font-size:15px;
+  color:var(--ink-soft);
+  margin:0;
+}
+.resource-arrow{
+  flex:0 0 auto;
+  width:44px;height:44px;
+  border-radius:50%;
+  background:var(--sage-wash);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--sage-deep);
+  font-size:20px;
+  transition:background .2s ease, color .2s ease;
+}
+.resource a:hover .resource-arrow{
+  background:var(--sage);
+  color:#fff;
+}
+footer{
+  margin-top:72px;
+  padding-top:28px;
+  border-top:1px solid var(--rule);
+  font-size:13px;
+  color:var(--ink-soft);
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  align-items:center;
+}
+footer a{color:var(--sage-deep);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+@media (max-width:520px){
+  .resource a{flex-direction:row;padding:22px;}
+  .resource-title{font-size:21px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <span class="brand-blob" aria-hidden="true"></span>
+    <span class="brand-name"><span>eva</span><span>guerrero</span></span>
+  </div>
+
+  <p class="eyebrow">Recursos · Negocio en Calma</p>
+  <h1>Herramientas para <em>hacer crecer</em> tu negocio</h1>
+  <p class="intro">Plantillas, planificadores y recursos que voy publicando para freelancers y emprendedoras. Elige el que necesites y ábrelo directamente en tu navegador.</p>
+
+  <hr class="rule">
+  <p class="list-label">Disponibles</p>
+
+  <ul class="resources">
+    <li class="resource">
+      <a href="./plan-2027/">
+        <span class="resource-text">
+          <span class="resource-tag">Plantilla · Planificación anual</span>
+          <span class="resource-title">Plan de promociones 2027</span>
+          <span class="resource-desc">El calendario comercial del año con el día en que toca empezar cada promoción.</span>
+        </span>
+        <span class="resource-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </li>
+  </ul>
+
+  <footer>
+    <span>© <span id="year"></span> Eva Guerrero</span>
+    <a href="https://evaguerrero.es" target="_blank" rel="noopener">evaguerrero.es</a>
+  </footer>
+</div>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
