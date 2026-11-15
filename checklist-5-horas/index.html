@@ -82,6 +82,11 @@
   .video-placeholder p{margin:0; font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic}
   .video-placeholder small{display:block; margin-top:6px; font-family:'Noto Sans',sans-serif; font-size:13px; opacity:.75; font-style:normal}
   .video-pie{font-size:14px; color:var(--gris); margin:12px 4px 2px}
+  .video-player{position:absolute; inset:0}
+  .video-player.flota{position:fixed; inset:auto; right:20px; bottom:20px; width:380px; aspect-ratio:16/9; z-index:50; border-radius:12px; overflow:hidden; background:var(--verde); box-shadow:0 12px 32px rgba(0,0,0,.22)}
+  .video-cerrar{display:none; position:absolute; top:6px; right:6px; z-index:2; width:28px; height:28px; border:0; border-radius:50%; background:rgba(0,0,0,.55); color:#fff; font-size:18px; line-height:28px; cursor:pointer}
+  .video-player.flota .video-cerrar{display:block}
+  @media (max-width:600px){ .video-player.flota{right:12px; bottom:12px; width:62vw} }
 
   /* Progreso */
   .progreso{position:sticky; top:0; z-index:5; background:rgba(247,241,230,.94); backdrop-filter:blur(6px); padding:12px 0 10px; margin:0 0 18px; border-bottom:1px solid var(--linea)}
@@ -189,7 +194,7 @@
 
   <p class="eyebrow">Minicurso gratuito</p>
   <h1>Recupera <em>5 horas</em><br>esta semana</h1>
-  <p class="intro">Mira el vídeo con esta página abierta y ve rellenando cada paso. No hace falta hacerlo todo hoy: empieza por el primero, que te lleva un minuto, y sigue cuando puedas.</p>
+  <p class="intro">Dale al play y baja a la checklist: el vídeo se queda contigo en una esquina mientras rellenas cada paso. No hace falta hacerlo todo hoy: empieza por el primero, que te lleva un minuto, y sigue cuando puedas.</p>
 
   <div class="reglas">
     <div class="regla"><b>Sin perfección</b><span>Buscamos control de tu semana y empezar a recuperar la calma.</span></div>
@@ -198,9 +203,12 @@
 
   <section class="video" aria-label="Vídeo del minicurso">
     <div class="video-frame">
-      <iframe src="https://iframe.mediadelivery.net/embed/757804/174ebd43-220f-456b-874b-212a75e436b3?autoplay=false&amp;preload=true&amp;responsive=true" title="Minicurso Recupera 5 horas esta semana" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen></iframe>
+      <div class="video-player" id="videoPlayer">
+        <button type="button" class="video-cerrar" id="videoCerrar" aria-label="Dejar de flotar el vídeo">×</button>
+        <iframe src="https://iframe.mediadelivery.net/embed/757804/174ebd43-220f-456b-874b-212a75e436b3?autoplay=false&amp;preload=true&amp;responsive=true" title="Minicurso Recupera 5 horas esta semana" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen></iframe>
+      </div>
     </div>
-    <p class="video-pie">Ponte el vídeo, ten esta página al lado y para cuando quieras para escribir.</p>
+    <p class="video-pie">Cuando bajes, el vídeo te acompaña en una esquina. Páralo cuando quieras para escribir, y si te estorba, ciérralo con la ×: vuelve a su sitio.</p>
   </section>
 
   <div class="progreso" aria-live="polite">
@@ -431,6 +439,17 @@
     setTimeout(function(){ aviso.textContent = textoAviso; }, 3500);
     pintar();
   });
+})();
+
+// Vídeo flotante: cuando le has dado al play y bajas a la checklist, el vídeo se queda en una esquina
+(function(){
+  var player=document.getElementById('videoPlayer'), cerrar=document.getElementById('videoCerrar');
+  var marco=player && player.parentNode; if(!player||!marco||!('IntersectionObserver' in window)) return;
+  var usado=false, cerrado=false, visible=true;
+  function pinta(){ player.classList.toggle('flota', usado && !cerrado && !visible); }
+  window.addEventListener('blur', function(){ setTimeout(function(){ if(document.activeElement && document.activeElement.tagName==='IFRAME'){ usado=true; pinta(); } },0); });
+  new IntersectionObserver(function(e){ visible=e[0].isIntersecting; if(visible) cerrado=false; pinta(); },{threshold:0.25}).observe(marco);
+  cerrar.addEventListener('click', function(){ cerrado=true; pinta(); });
 })();
 </script>
 </body>
