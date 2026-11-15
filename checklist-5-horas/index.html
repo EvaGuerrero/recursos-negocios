@@ -150,12 +150,16 @@
   }
   button.btn.sec{background:transparent; color:var(--verde)}
   button.btn:hover{opacity:.88}
+  .maravillas{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:22px 0 22px; text-align:left}
+  .maravillas div{background:rgba(255,253,248,.08); border:1px solid rgba(204,170,60,.35); border-radius:14px; padding:14px 16px; font-size:14px; line-height:1.5}
+  .maravillas b{display:block; font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:600; color:var(--oro); line-height:1.2; margin-bottom:4px}
+  .cierre .remate{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px; margin:0 auto 14px}
   .aviso{font-size:13px; color:var(--gris); text-align:center; margin:0}
   footer{margin-top:40px; padding-top:20px; border-top:1px solid var(--linea); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--verde-suave)}
   footer a{color:inherit}
 
   @media (max-width:600px){
-    .reglas,.dos{grid-template-columns:1fr}
+    .reglas,.dos,.maravillas{grid-template-columns:1fr}
     .filtro{grid-template-columns:1fr 1fr}
     .paso{padding:18px 16px}
     .resultado{flex-wrap:wrap}
@@ -169,6 +173,8 @@
     .paso{break-inside:avoid; border-color:#ccc; box-shadow:none; padding:12px 14px; margin-bottom:10px}
     .cierre{background:#fff; color:var(--verde); border:1px solid var(--oro)}
     .cierre h2{color:var(--verde)}
+    .maravillas div{background:#fff; break-inside:avoid}
+    .maravillas b{color:var(--verde)}
     textarea{min-height:60px}
   }
 </style>
@@ -341,8 +347,15 @@
   </article>
 
   <section class="cierre">
-    <h2>Esto es solo <em>una semana</em></h2>
-    <p>Lo difícil no es tener una semana buena, sino que la siguiente también lo sea. Repite estos pasos cada lunes y verás cómo tu semana empieza a sonar distinto.</p>
+    <h2>Lo que acabas de hacer tiene nombre: <em>time blocking</em></h2>
+    <p>Al reservar tus bloques de foco has hecho algo muy sencillo y muy potente: decidir antes qué va a pasar en tu semana, en lugar de dejar que la semana decida por ti.</p>
+    <div class="maravillas">
+      <div><b>Dejas de decidir a cada rato</b>Cuando llega el bloque ya sabes qué toca. La energía que gastabas en pensar «¿y ahora qué?» va directa al trabajo.</div>
+      <div><b>Una sola cosa cada vez</b>Saltar de tarea en tarea agota. Un bloque protege tu atención y lo importante avanza de verdad.</div>
+      <div><b>Tu calendario dice la verdad</b>Ves cuánto cabe realmente en tu semana y dejas de prometerte imposibles que luego pesan.</div>
+      <div><b>El trabajo tiene final</b>Si lo importante ya tiene su hueco, cerrar el portátil a tu hora deja de dar culpa.</div>
+    </div>
+    <p class="remate">Hoy han sido dos bloques. Imagina tu semana entera pensada así.</p>
     <p>Y si te apetece, responde al email del minicurso con tu frase de «Semana ganada si…». Te leo.</p>
   </section>
 
