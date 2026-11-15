@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recupera 5 horas esta semana · Minicurso de Eva Guerrero</title>
+<meta name="description" content="Minicurso gratuito de Eva Guerrero: un vídeo y una checklist de 7 pasos para recuperar 5 horas esta semana.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#f7f1e6;
+    --papel:#fffdf8;
+    --verde:#2f4a3a;
+    --verde-suave:#5b7363;
+    --oro:#ccaa3c;
+    --oro-suave:#efe3bb;
+    --texto:#2b2b28;
+    --gris:#6d6a62;
+    --linea:#e6dccb;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--crema);
+    color:var(--texto);
+    font-family:'Noto Sans',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    position:relative;
+    overflow-x:hidden;
+  }
+  /* Monograma Z de fondo */
+  body::before{
+    content:"Z";
+    position:fixed;
+    right:-6vw; top:4vh;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:min(70vw,720px);
+    line-height:1;
+    color:var(--verde);
+    opacity:.045;
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{position:relative; z-index:1; max-width:760px; margin:0 auto; padding:40px 22px 64px}
+
+  header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:36px}
+  .logo{
+    width:52px; height:52px; border-radius:50%;
+    border:1.5px solid var(--oro);
+    display:grid; place-items:center;
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600;
+    font-size:24px; color:var(--verde); background:var(--papel);
+  }
+  .marca{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--verde-suave)}
+
+  .eyebrow{font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--oro); font-weight:600; margin:0 0 10px}
+  h1{
+    font-family:'Cormorant Garamond',serif; font-weight:600;
+    font-size:clamp(36px,6vw,54px); line-height:1.05; color:var(--verde); margin:0 0 16px;
+  }
+  h1 em{font-style:italic; color:var(--oro)}
+  .intro{font-size:17px; color:var(--texto); max-width:600px; margin:0 0 28px}
+
+  .reglas{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:0 0 36px;
+  }
+  .regla{background:var(--papel); border:1px solid var(--linea); border-radius:14px; padding:16px 18px}
+  .regla b{display:block; font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--verde); font-weight:600; line-height:1.2; margin-bottom:4px}
+  .regla span{font-size:14px; color:var(--gris)}
+
+  /* Vídeo */
+  .video{background:var(--papel); border:1px solid var(--linea); border-radius:18px; padding:14px; margin:0 0 40px}
+  .video-frame{position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; background:var(--verde)}
+  .video-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+  .video-placeholder{position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:var(--crema); padding:20px}
+  .video-placeholder p{margin:0; font-family:'Cormorant Garamond',serif; font-size:24px; font-style:italic}
+  .video-placeholder small{display:block; margin-top:6px; font-family:'Noto Sans',sans-serif; font-size:13px; opacity:.75; font-style:normal}
+  .video-pie{font-size:14px; color:var(--gris); margin:12px 4px 2px}
+
+  /* Progreso */
+  .progreso{position:sticky; top:0; z-index:5; background:rgba(247,241,230,.94); backdrop-filter:blur(6px); padding:12px 0 10px; margin:0 0 18px; border-bottom:1px solid var(--linea)}
+  .progreso-fila{display:flex; justify-content:space-between; align-items:baseline; font-size:14px; color:var(--verde-suave); margin-bottom:6px}
+  .progreso-fila strong{color:var(--verde)}
+  .barra{height:6px; background:var(--oro-suave); border-radius:99px; overflow:hidden}
+  .barra i{display:block; height:100%; width:0; background:var(--oro); border-radius:99px; transition:width .35s ease}
+
+  /* Pasos */
+  .paso{
+    background:var(--papel); border:1px solid var(--linea); border-radius:18px;
+    padding:22px 22px 20px; margin:0 0 16px; transition:border-color .2s, box-shadow .2s;
+  }
+  .paso.hecho{border-color:var(--oro); box-shadow:0 0 0 3px rgba(204,170,60,.12)}
+  .paso-cab{display:flex; gap:14px; align-items:flex-start}
+  .num{
+    flex:0 0 auto; width:40px; height:40px; border-radius:50%;
+    background:var(--verde); color:var(--crema);
+    display:grid; place-items:center;
+    font-family:'Cormorant Garamond',serif; font-weight:600; font-size:22px;
+  }
+  .paso.hecho .num{background:var(--oro); color:var(--verde)}
+  .paso h2{font-family:'Cormorant Garamond',serif; font-weight:600; font-size:26px; line-height:1.15; color:var(--verde); margin:2px 0 6px}
+  .paso p{margin:0 0 12px}
+  .frase{
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:var(--verde);
+    border-left:3px solid var(--oro); padding:4px 0 4px 14px; margin:14px 0 4px;
+  }
+  .campos{margin-top:10px; display:grid; gap:10px}
+  label.mini{font-size:13px; color:var(--gris); display:block; margin-bottom:4px}
+  input[type=text], textarea{
+    width:100%; font:inherit; color:var(--texto);
+    background:#fff; border:1px solid var(--linea); border-radius:10px;
+    padding:10px 12px; outline:none; transition:border-color .2s;
+  }
+  input[type=text]:focus, textarea:focus{border-color:var(--oro)}
+  textarea{min-height:96px; resize:vertical}
+  .tres{display:grid; gap:8px}
+  .resultado{display:flex; gap:10px; align-items:center}
+  .resultado input[type=text]{flex:1}
+  .manda{display:flex; align-items:center; gap:6px; font-size:13px; color:var(--verde-suave); white-space:nowrap; cursor:pointer}
+  .manda input{accent-color:var(--oro); width:16px; height:16px}
+  .dos{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .filtro{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:6px 0 4px}
+  .filtro div{background:var(--crema); border-radius:10px; padding:8px 10px; font-size:13px; line-height:1.35}
+  .filtro b{display:block; color:var(--verde); font-size:14px}
+  .ejemplos{font-size:14px; color:var(--gris); margin:0 0 10px; padding-left:18px}
+  .ejemplos li{margin:2px 0}
+
+  .check{display:flex; align-items:center; gap:10px; margin-top:14px; font-size:15px; color:var(--verde); cursor:pointer; user-select:none}
+  .check input{width:20px; height:20px; accent-color:var(--oro); cursor:pointer}
+
+  /* Cierre */
+  .cierre{
+    background:var(--verde); color:var(--crema); border-radius:20px;
+    padding:30px 26px; margin:34px 0 22px; text-align:center;
+  }
+  .cierre h2{font-family:'Cormorant Garamond',serif; font-weight:600; font-size:32px; line-height:1.1; margin:0 0 10px; color:var(--crema)}
+  .cierre h2 em{color:var(--oro)}
+  .cierre p{margin:0 auto 6px; max-width:520px; opacity:.92}
+  .acciones{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:0 0 28px}
+  button.btn{
+    font:inherit; font-size:15px; font-weight:500; cursor:pointer;
+    border-radius:99px; padding:11px 20px; border:1.5px solid var(--verde);
+    background:var(--verde); color:var(--crema); transition:opacity .2s;
+  }
+  button.btn.sec{background:transparent; color:var(--verde)}
+  button.btn:hover{opacity:.88}
+  .aviso{font-size:13px; color:var(--gris); text-align:center; margin:0}
+  footer{margin-top:40px; padding-top:20px; border-top:1px solid var(--linea); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--verde-suave)}
+  footer a{color:inherit}
+
+  @media (max-width:600px){
+    .reglas,.dos{grid-template-columns:1fr}
+    .filtro{grid-template-columns:1fr 1fr}
+    .paso{padding:18px 16px}
+    .resultado{flex-wrap:wrap}
+  }
+
+  /* Impresión / guardar como PDF */
+  @media print{
+    body{background:#fff; font-size:12px}
+    body::before,.progreso,.acciones,.video,.aviso{display:none}
+    .wrap{padding:0; max-width:none}
+    .paso{break-inside:avoid; border-color:#ccc; box-shadow:none; padding:12px 14px; margin-bottom:10px}
+    .cierre{background:#fff; color:var(--verde); border:1px solid var(--oro)}
+    .cierre h2{color:var(--verde)}
+    textarea{min-height:60px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo" aria-hidden="true">eg</div>
+    <div class="marca">Eva Guerrero · Negocio en calma</div>
+  </header>
+
+  <p class="eyebrow">Minicurso gratuito</p>
+  <h1>Recupera <em>5 horas</em><br>esta semana</h1>
+  <p class="intro">Mira el vídeo con esta página abierta y ve rellenando cada paso. No hace falta hacerlo todo hoy: empieza por el primero, que te lleva un minuto, y sigue cuando puedas.</p>
+
+  <div class="reglas">
+    <div class="regla"><b>Sin perfección</b><span>Buscamos control de tu semana y empezar a recuperar la calma.</span></div>
+    <div class="regla"><b>Un 20 % ya cuenta</b><span>Si hoy solo haces un paso, ya es una victoria.</span></div>
+  </div>
+
+  <section class="video" aria-label="Vídeo del minicurso">
+    <div class="video-frame">
+      <!-- VÍDEO: pega aquí el iframe de Bunny Stream y borra el bloque .video-placeholder.
+           Ejemplo:
+           <iframe src="https://iframe.mediadelivery.net/embed/BIBLIOTECA/VIDEO_ID?autoplay=false" loading="lazy" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen></iframe>
+      -->
+      <div class="video-placeholder">
+        <div><p>El vídeo del minicurso</p><small>Unos 8 minutos · se verá aquí</small></div>
+      </div>
+    </div>
+    <p class="video-pie">Ponte el vídeo, ten esta página al lado y para cuando quieras para escribir.</p>
+  </section>
+
+  <div class="progreso" aria-live="polite">
+    <div class="progreso-fila"><span>Tu progreso</span><strong><span id="hechos">0</span> de 7 pasos</strong></div>
+    <div class="barra"><i id="barra"></i></div>
+  </div>
+
+  <!-- Paso 1 -->
+  <article class="paso" data-paso="1">
+    <div class="paso-cab">
+      <div class="num">1</div>
+      <div>
+        <h2>Decide cómo será una semana ganada</h2>
+        <p>Completa la frase en una sola línea. Es tu norte para el resto de pasos.</p>
+      </div>
+    </div>
+    <div class="campos">
+      <input type="text" data-k="ganada" placeholder="Semana ganada si…">
+    </div>
+    <label class="check"><input type="checkbox" data-k="hecho1"> Hecho</label>
+  </article>
+
+  <!-- Paso 2 -->
+  <article class="paso" data-paso="2">
+    <div class="paso-cab">
+      <div class="num">2</div>
+      <div>
+        <h2>Vacía el ruido mental</h2>
+        <p>Escribe todo lo que te ronda la cabeza, sin ordenar. Después clasifícalo en tres montones y elige una cosa pequeña, de 10 minutos como máximo, para hacer hoy.</p>
+      </div>
+    </div>
+    <div class="campos">
+      <div><label class="mini">Volcado (todo, sin filtro)</label><textarea data-k="volcado" placeholder="Llamar a…, preparar…, responder a…"></textarea></div>
+      <div class="dos">
+        <div><label class="mini">Hoy</label><textarea data-k="hoy"></textarea></div>
+        <div><label class="mini">Esta semana</label><textarea data-k="semana"></textarea></div>
+      </div>
+      <div><label class="mini">Algún día</label><textarea data-k="algundia" style="min-height:70px"></textarea></div>
+      <div><label class="mini">Mi tarea de 10 minutos para hoy</label><input type="text" data-k="diezmin"></div>
+    </div>
+    <p class="frase">«Que exista en tu cabeza no significa que tenga que existir en tu semana.»</p>
+    <label class="check"><input type="checkbox" data-k="hecho2"> Hecho</label>
+  </article>
+
+  <!-- Paso 3 -->
+  <article class="paso" data-paso="3">
+    <div class="paso-cab">
+      <div class="num">3</div>
+      <div>
+        <h2>Elige el que manda</h2>
+        <p>Escribe tres resultados que te gustaría dejar hechos esta semana. Luego marca el que manda: si solo pudieras conseguir uno, ¿cuál sería?</p>
+      </div>
+    </div>
+    <div class="campos tres">
+      <div class="resultado"><input type="text" data-k="res1" placeholder="Resultado 1"><label class="manda"><input type="radio" name="manda" value="1" data-k="manda"> Manda</label></div>
+      <div class="resultado"><input type="text" data-k="res2" placeholder="Resultado 2"><label class="manda"><input type="radio" name="manda" value="2" data-k="manda"> Manda</label></div>
+      <div class="resultado"><input type="text" data-k="res3" placeholder="Resultado 3"><label class="manda"><input type="radio" name="manda" value="3" data-k="manda"> Manda</label></div>
+    </div>
+    <label class="check"><input type="checkbox" data-k="hecho3"> Hecho</label>
+  </article>
+
+  <!-- Paso 4 -->
+  <article class="paso" data-paso="4">
+    <div class="paso-cab">
+      <div class="num">4</div>
+      <div>
+        <h2>Reserva dos bloques de foco</h2>
+        <p>Elige solo dos bloques de 25 a 45 minutos esta semana, con día y hora aunque sean aproximados, y asigna a cada uno una tarea concreta del que manda.</p>
+      </div>
+    </div>
+    <div class="campos dos">
+      <div><label class="mini">Bloque 1 · día y hora</label><input type="text" data-k="b1cuando" placeholder="Martes, 9:30–10:15"><label class="mini" style="margin-top:8px">Tarea</label><input type="text" data-k="b1tarea"></div>
+      <div><label class="mini">Bloque 2 · día y hora</label><input type="text" data-k="b2cuando" placeholder="Jueves, 10:00–10:45"><label class="mini" style="margin-top:8px">Tarea</label><input type="text" data-k="b2tarea"></div>
+    </div>
+    <p class="frase">«Un bloque = una sola cosa.»</p>
+    <label class="check"><input type="checkbox" data-k="hecho4"> Hecho</label>
+  </article>
+
+  <!-- Paso 5 -->
+  <article class="paso" data-paso="5">
+    <div class="paso-cab">
+      <div class="num">5</div>
+      <div>
+        <h2>Tapa una fuga</h2>
+        <p>Tu tiempo no se pierde, se fuga en tareas hormiga. Apunta tus tres fugas principales, elige una y crea una regla mínima que puedas cumplir incluso en un día malo.</p>
+      </div>
+    </div>
+    <ul class="ejemplos">
+      <li>Mirar WhatsApp solo en dos ventanas de tiempo.</li>
+      <li>Notificaciones apagadas durante 30 minutos.</li>
+      <li>Reuniones solo con objetivo claro y de 30 minutos como máximo.</li>
+      <li>Abrir el correo solo para gestionarlo entero.</li>
+    </ul>
+    <div class="campos">
+      <div><label class="mini">Mis tres fugas</label><input type="text" data-k="fugas" placeholder="WhatsApp, saltar entre tareas, redes…"></div>
+      <div><label class="mini">Mi regla mínima</label><input type="text" data-k="regla"></div>
+    </div>
+    <label class="check"><input type="checkbox" data-k="hecho5"> Hecho</label>
+  </article>
+
+  <!-- Paso 6 -->
+  <article class="paso" data-paso="6">
+    <div class="paso-cab">
+      <div class="num">6</div>
+      <div>
+        <h2>Aligera tu semana</h2>
+        <p>Coge 10 tareas de tu volcado y pásalas por este filtro. Quédate solo con entre 3 y 5 para hacer.</p>
+      </div>
+    </div>
+    <div class="filtro">
+      <div><b>Eliminar</b>si no aporta ahora</div>
+      <div><b>Delegar</b>si no necesita ser tuyo</div>
+      <div><b>Posponer</b>si no toca esta semana</div>
+      <div><b>Hacer</b>3 a 5 como máximo</div>
+    </div>
+    <div class="campos dos">
+      <div><label class="mini">Suelto (eliminar, delegar, posponer)</label><textarea data-k="suelto"></textarea></div>
+      <div><label class="mini">Hago esta semana</label><textarea data-k="hago"></textarea></div>
+    </div>
+    <p class="frase">«Posponer no es fallar. Es elegir.»</p>
+    <label class="check"><input type="checkbox" data-k="hecho6"> Hecho</label>
+  </article>
+
+  <!-- Paso 7 -->
+  <article class="paso" data-paso="7">
+    <div class="paso-cab">
+      <div class="num">7</div>
+      <div>
+        <h2>Prepara tu día de mínimos y cierra la semana</h2>
+        <p>Hay días malos, y está bien. Decide qué es lo mínimo que harás en un día así para que el sistema no se caiga. Y al final de la semana, reserva 20 minutos para cerrarla y preparar la siguiente.</p>
+      </div>
+    </div>
+    <div class="campos">
+      <div><label class="mini">Mi día de mínimos</label><input type="text" data-k="minimos"></div>
+      <div><label class="mini">Mi cierre semanal · día y hora</label><input type="text" data-k="cierre" placeholder="Viernes, 12:00–12:20"></div>
+    </div>
+    <label class="check"><input type="checkbox" data-k="hecho7"> Hecho</label>
+  </article>
+
+  <section class="cierre">
+    <h2>Esto es solo <em>una semana</em></h2>
+    <p>Lo difícil no es tener una semana buena, sino que la siguiente también lo sea. Repite estos pasos cada lunes y verás cómo tu semana empieza a sonar distinto.</p>
+    <p>Y si te apetece, responde al email del minicurso con tu frase de «Semana ganada si…». Te leo.</p>
+  </section>
+
+  <div class="acciones">
+    <button class="btn" id="imprimir" type="button">Imprimir o guardar en PDF</button>
+    <button class="btn sec" id="borrar" type="button">Empezar de cero</button>
+  </div>
+  <p class="aviso" id="aviso">Lo que escribes se guarda solo en este navegador.</p>
+
+  <footer>
+    <span>Eva Guerrero · Negocio en calma</span>
+    <a href="https://www.instagram.com/evaguerrero.es/">@evaguerrero.es</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var KEY = 'eg-checklist-5h-v1';
+  var datos = {};
+  try { datos = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { datos = {}; }
+
+  function guardar(){
+    try { localStorage.setItem(KEY, JSON.stringify(datos)); } catch(e) {}
+  }
+
+  var campos = document.querySelectorAll('[data-k]');
+  campos.forEach(function(el){
+    var k = el.getAttribute('data-k');
+    if (el.type === 'checkbox') {
+      el.checked = !!datos[k];
+      el.addEventListener('change', function(){ datos[k] = el.checked; guardar(); pintar(); });
+    } else if (el.type === 'radio') {
+      el.checked = datos[k] === el.value;
+      el.addEventListener('change', function(){ if (el.checked) { datos[k] = el.value; guardar(); } });
+    } else {
+      if (datos[k] != null) el.value = datos[k];
+      el.addEventListener('input', function(){ datos[k] = el.value; guardar(); });
+    }
+  });
+
+  function pintar(){
+    var n = 0;
+    for (var i = 1; i <= 7; i++) {
+      var hecho = !!datos['hecho' + i];
+      if (hecho) n++;
+      var paso = document.querySelector('.paso[data-paso="' + i + '"]');
+      if (paso) paso.classList.toggle('hecho', hecho);
+    }
+    document.getElementById('hechos').textContent = n;
+    document.getElementById('barra').style.width = (n / 7 * 100) + '%';
+  }
+  pintar();
+
+  var aviso = document.getElementById('aviso');
+  var textoAviso = aviso.textContent;
+
+  document.getElementById('imprimir').addEventListener('click', function(){
+    try { window.print(); }
+    catch(e) { aviso.textContent = 'Para guardarlo en PDF, usa Imprimir en el menú de tu navegador.'; }
+  });
+
+  var confirmando = false;
+  document.getElementById('borrar').addEventListener('click', function(){
+    if (!confirmando) {
+      confirmando = true;
+      this.textContent = 'Pulsa otra vez para borrarlo todo';
+      var b = this;
+      setTimeout(function(){ confirmando = false; b.textContent = 'Empezar de cero'; }, 4000);
+      return;
+    }
+    datos = {};
+    try { localStorage.removeItem(KEY); } catch(e) {}
+    campos.forEach(function(el){
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = false; else el.value = '';
+    });
+    confirmando = false;
+    this.textContent = 'Empezar de cero';
+    aviso.textContent = 'Listo, página en blanco para tu nueva semana.';
+    setTimeout(function(){ aviso.textContent = textoAviso; }, 3500);
+    pintar();
+  });
+})();
+</script>
+</body>
+</html>
